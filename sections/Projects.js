@@ -230,6 +230,45 @@ export default function Projects() {
       });
     };
   }, []);
+  useEffect(
+    function () {
+      var track = trackRef.current;
+      if (!track) return;
+
+      var touchStartX = 0;
+
+      function onTouchStart(e) {
+        touchStartX = e.touches[0].clientX;
+      }
+
+      function onTouchEnd(e) {
+        var dx = e.changedTouches[0].clientX - touchStartX;
+        var threshold = 50;
+        if (Math.abs(dx) < threshold) return;
+
+        if (dx < 0) {
+          // swipe left → next
+          var next = Math.min(PROJECTS.length - 1, current + 1);
+          setCurrent(next);
+          scrollToCard(next);
+        } else {
+          // swipe right → prev
+          var prev = Math.max(0, current - 1);
+          setCurrent(prev);
+          scrollToCard(prev);
+        }
+      }
+
+      track.addEventListener("touchstart", onTouchStart, { passive: true });
+      track.addEventListener("touchend", onTouchEnd, { passive: true });
+
+      return function () {
+        track.removeEventListener("touchstart", onTouchStart);
+        track.removeEventListener("touchend", onTouchEnd);
+      };
+    },
+    [current, setCurrent],
+  ); // re-attaches when current changes so it always has the latest value
 
   var progressPct = total > 1 ? (current / (total - 1)) * 100 : 0;
 
