@@ -203,8 +203,13 @@ export default function Projects() {
         end: "+=" + scrollDist,
         pin: panel,
         anticipatePin: 1,
+        preventOverlaps: true,
+        fastScrollEnd: true,
         scrub: 1.2,
         invalidateOnRefresh: true,
+        onEnter: function () {
+          ScrollTrigger.refresh();
+        }, // ← add
         animation: gsap.to(track, { x: -scrollDist, ease: "none" }),
         onUpdate: function (self) {
           if (progress)
@@ -223,7 +228,7 @@ export default function Projects() {
       });
     }
 
-    var t = setTimeout(setup, 160);
+    var t = setTimeout(setup, 500);
     window.addEventListener("resize", setup);
 
     var cards = track.querySelectorAll("[data-card]");
@@ -247,7 +252,7 @@ export default function Projects() {
   }, []);
 
   return (
-    <div ref={wrapperRef} id="projects">
+    <div ref={wrapperRef} id="projects" data-lenis-prevent>
       <div
         ref={panelRef}
         style={{

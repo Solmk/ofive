@@ -241,7 +241,13 @@ export default function About() {
       ref={sectionRef}
       id="about"
       className="section-pad"
-      style={{ position: "relative", overflow: "hidden" }}
+      style={{
+        position: "relative",
+        overflow: "hidden",
+        scrollMarginBottom: "0px",
+        marginBottom: 0,
+        paddingBottom: "var(--section-pad)",
+      }}
     >
       {/* Background watermark */}
       <div
