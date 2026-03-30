@@ -1,0 +1,258 @@
+/* Tailwind v4 — single import directive */
+@import "tailwindcss";
+
+/* ─── Design tokens — Black & White ───────────────────────────────────────── */
+@theme {
+  --color-black:    #000000;
+  --color-white:    #ffffff;
+  --color-accent:   #ffffff;
+  --color-surface:  #0a0a0a;
+  --color-surface2: #111111;
+  --color-border:   rgba(255,255,255,0.08);
+  --color-muted:    rgba(255,255,255,0.35);
+  --color-dim:      rgba(255,255,255,0.12);
+
+  --font-sans:    'DM Sans', system-ui, sans-serif;
+  --font-mono:    'JetBrains Mono', 'Fira Code', monospace;
+  --font-display: 'Bebas Neue', 'Impact', sans-serif;
+
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-circ: cubic-bezier(0, 0.55, 0.45, 1);
+  --ease-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  --section-pad: clamp(5rem, 12vw, 10rem);
+}
+
+/* ─── Base reset ───────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: auto;
+  background: #000;
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: #000;
+  overflow-x: hidden;
+  min-width: 320px;
+}
+
+/* ─── Custom cursor ────────────────────────────────────────────────────────── */
+@media (hover: hover) and (pointer: fine) {
+  *, *::before, *::after { cursor: none !important; }
+}
+@media (hover: none), (pointer: coarse) {
+  *, *::before, *::after { cursor: auto !important; }
+}
+
+/* ─── Scrollbar — white on black ────────────────────────────────────────────  */
+::-webkit-scrollbar { width: 2px; }
+::-webkit-scrollbar-track { background: #000; }
+::-webkit-scrollbar-thumb { background: #fff; border-radius: 2px; }
+* { scrollbar-width: thin; scrollbar-color: #fff #000; }
+
+/* ─── Selection ──────────────────────────────────────────────────────────────  */
+::selection { background: rgba(255,255,255,0.15); color: #fff; }
+
+/* ─── Lenis ──────────────────────────────────────────────────────────────────  */
+html.lenis { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+/* ─── Typography ─────────────────────────────────────────────────────────────  */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+  line-height: 0.95;
+}
+
+p {
+  line-height: 1.7;
+  color: rgba(255,255,255,0.5);
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ─── Grain texture ──────────────────────────────────────────────────────────  */
+.grain::before {
+  content: '';
+  position: fixed;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.028;
+  pointer-events: none;
+  z-index: 9998;
+  animation: grain 0.4s steps(1) infinite;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+@keyframes grain {
+  0%   { transform: translate(0,0) translateZ(0); }
+  20%  { transform: translate(-2%,-3%) translateZ(0); }
+  40%  { transform: translate(3%, 2%) translateZ(0); }
+  60%  { transform: translate(-1%, 4%) translateZ(0); }
+  80%  { transform: translate(4%,-2%) translateZ(0); }
+  100% { transform: translate(-3%, 1%) translateZ(0); }
+}
+
+@-moz-document url-prefix() {
+  .grain::before { display: none; }
+}
+
+/* ─── Clip reveal ────────────────────────────────────────────────────────────  */
+.clip-wrap  { overflow: hidden; display: block; }
+.clip-inner { display: block; will-change: transform; }
+
+/* ─── Horizontal scroll track ────────────────────────────────────────────────  */
+.h-scroll-track {
+  display: flex;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  will-change: transform;
+  padding-right: 10vw;
+}
+
+/* ─── Glow utilities — white only ────────────────────────────────────────────  */
+.glow-white  { box-shadow: 0 0 40px rgba(255,255,255,0.10); }
+.glow-white-sm { box-shadow: 0 0 20px rgba(255,255,255,0.06); }
+
+/* ─── 3D card tilt ───────────────────────────────────────────────────────────  */
+.tilt-card {
+  transform-style: preserve-3d;
+  transform: perspective(800px);
+  transition: transform 0.1s linear;
+}
+
+/* ─── Spotlight — white instead of colored ───────────────────────────────────  */
+.spotlight {
+  background: radial-gradient(
+    600px circle at var(--x, 50%) var(--y, 50%),
+    rgba(255,255,255,0.05) 0%,
+    transparent 60%
+  );
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.spotlight-wrap:hover .spotlight { opacity: 1; }
+
+/* ─── Data stream animation ──────────────────────────────────────────────────  */
+@keyframes dataStream {
+  0%   { transform: translateY(0);    opacity: 0.4; }
+  100% { transform: translateY(-100%); opacity: 0;   }
+}
+
+/* ─── Pulse dot ──────────────────────────────────────────────────────────────  */
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1);   opacity: 1;   }
+  50%       { transform: scale(1.8); opacity: 0.2; }
+}
+
+/* ─── Preloader counter ──────────────────────────────────────────────────────  */
+.preloader-counter {
+  font-family: var(--font-mono);
+  font-size: clamp(4rem, 18vw, 14rem);
+  font-weight: 300;
+  line-height: 1;
+  color: #fff;
+  letter-spacing: -0.04em;
+}
+
+/* ─── Section padding ────────────────────────────────────────────────────────  */
+.section-pad {
+  padding-top: var(--section-pad);
+  padding-bottom: var(--section-pad);
+}
+
+.container-xl {
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 5vw, 5rem);
+}
+
+/* ─── Responsive ─────────────────────────────────────────────────────────────  */
+@media (max-width: 480px) {
+  :root { --section-pad: 4rem; }
+}
+
+/* ─── Custom cursor — white ──────────────────────────────────────────────────  */
+.cur-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  background: #ffffff;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 8px rgba(255,255,255,0.8);
+  transition: width 0.2s ease, height 0.2s ease;
+}
+
+.cur-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(255,255,255,0.5);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99998;
+  transform: translate(-50%, -50%);
+  transition: width 0.35s cubic-bezier(0.16,1,0.3,1),
+              height 0.35s cubic-bezier(0.16,1,0.3,1),
+              border-color 0.3s ease,
+              background 0.3s ease;
+}
+
+.cur-ring.active {
+  width: 56px;
+  height: 56px;
+  border-color: #ffffff;
+  background: rgba(255,255,255,0.04);
+}
+
+/* ─── Nav underline ──────────────────────────────────────────────────────────  */
+.nav-btn .nav-underline {
+  transition: width 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav-btn:hover .nav-underline {
+  width: 100% !important;
+}
+@keyframes glowPulse {
+  0%, 100% {
+    text-shadow:
+      0 0 80px rgba(255,255,255,0.9),
+      0 0 160px rgba(255,255,255,0.5),
+      0 0 300px rgba(255,255,255,0.2);
+  }
+  50% {
+    text-shadow:
+      0 0 120px rgba(255,255,255,1),
+      0 0 240px rgba(255,255,255,0.7),
+      0 0 400px rgba(255,255,255,0.3);
+  }
+}
+/* Add to your CSS file */
+.clip-inner:hover .smoky-line-1 {
+  text-shadow: 0 0 100px rgba(255,255,255,0.9), 0 0 20px rgba(255,255,255,0.7); /* Deep smoke glow */
+  filter: blur(2px); /* Soften the text itself */
+}
