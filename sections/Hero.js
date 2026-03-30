@@ -172,7 +172,7 @@ export default function Hero() {
             objectPosition: "center center",
           }}
         >
-          <source src="/hero-ofive.mp4" type="video/mp4" />
+          <source src="/Video Project 4.mp4" type="video/mp4" />
           {/* <source src="/hero-bg.mp4" type="video/webm" /> */}
         </video>
         <div
@@ -284,243 +284,286 @@ export default function Hero() {
           <div
             style={{
               display: "flex",
-              alignItems: "center",
-              gap: "1.5rem",
+              flexDirection: "column",
+              gap: "0.5rem",
               margin: "clamp(0.4rem, 1.2vw, 1rem) 0",
             }}
           >
-            {/* Left line — ← was cyan, now white */}
+            {/* Line + text + line row */}
             <div
-              ref={dividerRef}
-              style={{
-                flex: 1,
-                height: "1px",
-                background:
-                  "linear-gradient(to right, transparent, rgba(255,255,255,0.3), rgba(255,255,255,0.7))",
-                transformOrigin: "left center",
-              }}
-            />
-
-            {/* Role label */}
-            <motion.div
-              ref={tagRef}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "0.5rem",
-                whiteSpace: "nowrap",
-              }}
-              initial="hidden"
-              animate="visible"
-              variants={{
-                hidden: {},
-                visible: {
-                  transition: { staggerChildren: 0.08, delayChildren: 1.2 },
-                },
-              }}
+              style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}
             >
-              {/* "Full-Stack Engineer" — each letter spins in individually */}
-              {"FULL-STACK ENGINEER".split("").map(function (char, i) {
-                return (
-                  <motion.span
-                    key={i}
-                    style={{
-                      display: "inline-block",
-                      fontFamily: '"Orbitron", monospace',
-                      fontSize: "clamp(0.55rem, 1.2vw, 0.85rem)",
-                      fontWeight: 700,
-                      letterSpacing: "0.1em",
-                      color: char === " " ? "transparent" : "#fff",
-                      textTransform: "uppercase",
-                      width: char === " " ? "0.6rem" : "auto",
-                      textShadow: "0 0 12px rgba(255,255,255,0.4)",
-                    }}
-                    variants={{
-                      hidden: {
-                        opacity: 0,
-                        rotateX: -90,
-                        y: 20,
-                        filter: "blur(6px)",
-                      },
-                      visible: {
-                        opacity: 1,
-                        rotateX: 0,
-                        y: 0,
-                        filter: "blur(0px)",
-                        transition: {
-                          duration: 0.5,
-                          ease: [0.16, 1, 0.3, 1],
-                        },
-                      },
-                    }}
-                  >
-                    {char === " " ? "\u00A0" : char}
-                  </motion.span>
-                );
-              })}
-
-              {/* Separator dot */}
-              <motion.span
+              {/* Left line */}
+              <div
+                ref={dividerRef}
                 style={{
-                  display: "inline-block",
-                  width: "4px",
-                  height: "4px",
-                  borderRadius: "50%",
-                  background: "#fff",
-                  flexShrink: 0,
-                  margin: "0 0.3rem",
-                }}
-                animate={{
-                  opacity: [1, 0.1, 1],
-                  scale: [1, 1.8, 1],
-                  boxShadow: [
-                    "0 0 8px rgba(255,255,255,0.9)",
-                    "0 0 2px rgba(255,255,255,0.1)",
-                    "0 0 8px rgba(255,255,255,0.9)",
-                  ],
-                }}
-                transition={{
-                  duration: 1.6,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 0,
+                  flex: "1 1 auto", // ← grows to fill available space
+                  height: "1px",
+                  background:
+                    "linear-gradient(to right, transparent, rgba(255,255,255,0.3), rgba(255,255,255,0.7))",
+                  transformOrigin: "left center",
                 }}
               />
 
-              {/* "Nashville, TN" — each letter spins in */}
-              {"NASHVILLE, TN".split("").map(function (char, i) {
-                return (
+              {/* Role label */}
+              <motion.div
+                ref={tagRef}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  flexWrap: "wrap",
+                  gap: "0.2rem",
+                  flex: 1,
+                  justifyContent: "center",
+                }}
+                initial="hidden"
+                animate="visible"
+                variants={{
+                  hidden: {},
+                  visible: {
+                    transition: { staggerChildren: 0.08, delayChildren: 1.2 },
+                  },
+                }}
+              >
+                {/* Row 1 — FULL-STACK ENGINEER always on first line */}
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "0.2rem",
+                    width: "100%",
+                    justifyContent: "center",
+                  }}
+                >
+                  {"FULL-STACK ENGINEER".split("").map(function (char, i) {
+                    return (
+                      <motion.span
+                        key={i}
+                        style={{
+                          display: "inline-block",
+                          fontFamily: '"Orbitron", monospace',
+                          fontSize: "clamp(0.42rem, 1.1vw, 0.85rem)",
+                          fontWeight: 700,
+                          letterSpacing: "0.08em",
+                          color: char === " " ? "transparent" : "#fff",
+                          textTransform: "uppercase",
+                          width: char === " " ? "0.4rem" : "auto",
+                          textShadow: "0 0 12px rgba(255,255,255,0.4)",
+                        }}
+                        variants={{
+                          hidden: {
+                            opacity: 0,
+                            rotateX: -90,
+                            y: 20,
+                            filter: "blur(6px)",
+                          },
+                          visible: {
+                            opacity: 1,
+                            rotateX: 0,
+                            y: 0,
+                            filter: "blur(0px)",
+                            transition: {
+                              duration: 0.5,
+                              ease: [0.16, 1, 0.3, 1],
+                            },
+                          },
+                        }}
+                      >
+                        {char === " " ? "\u00A0" : char}
+                      </motion.span>
+                    );
+                  })}
+                </div>
+
+                {/* Row 2 — dot · NASHVILLE, TN · 2026 on second line */}
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "0.2rem",
+                    width: "100%",
+                    justifyContent: "center",
+                  }}
+                >
+                  {/* Dot 1 */}
                   <motion.span
-                    key={"n" + i}
                     style={{
                       display: "inline-block",
-                      fontFamily: '"Orbitron", monospace',
-                      fontSize: "clamp(0.55rem, 1.2vw, 0.85rem)",
-                      fontWeight: 700,
-                      letterSpacing: "0.1em",
-                      color:
-                        char === " " ? "transparent" : "rgba(255,255,255,0.6)",
-                      textTransform: "uppercase",
-                      width: char === " " ? "0.4rem" : "auto",
+                      width: "3px",
+                      height: "3px",
+                      borderRadius: "50%",
+                      background: "#fff",
+                      flexShrink: 0,
+                      margin: "0 0.2rem",
                     }}
-                    variants={{
-                      hidden: {
-                        opacity: 0,
-                        rotateX: 90,
-                        y: -20,
-                        filter: "blur(6px)",
-                      },
-                      visible: {
-                        opacity: 1,
-                        rotateX: 0,
-                        y: 0,
-                        filter: "blur(0px)",
-                        transition: {
-                          duration: 0.5,
-                          ease: [0.16, 1, 0.3, 1],
-                          delay: 0.6 + i * 0.04,
-                        },
-                      },
+                    animate={{
+                      opacity: [1, 0.1, 1],
+                      scale: [1, 1.8, 1],
+                      boxShadow: [
+                        "0 0 8px rgba(255,255,255,0.9)",
+                        "0 0 2px rgba(255,255,255,0.1)",
+                        "0 0 8px rgba(255,255,255,0.9)",
+                      ],
                     }}
-                  >
-                    {char === " " ? "\u00A0" : char}
-                  </motion.span>
-                );
-              })}
+                    transition={{
+                      duration: 1.6,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: 0,
+                    }}
+                  />
 
-              {/* Separator dot 2 */}
-              <motion.span
+                  {/* NASHVILLE, TN */}
+                  {"NASHVILLE, TN".split("").map(function (char, i) {
+                    return (
+                      <motion.span
+                        key={"n" + i}
+                        style={{
+                          display: "inline-block",
+                          fontFamily: '"Orbitron", monospace',
+                          fontSize: "clamp(0.42rem, 1.1vw, 0.85rem)",
+                          fontWeight: 700,
+                          letterSpacing: "0.08em",
+                          color:
+                            char === " "
+                              ? "transparent"
+                              : "rgba(255,255,255,0.6)",
+                          textTransform: "uppercase",
+                          width: char === " " ? "0.3rem" : "auto",
+                        }}
+                        variants={{
+                          hidden: {
+                            opacity: 0,
+                            rotateX: 90,
+                            y: -20,
+                            filter: "blur(6px)",
+                          },
+                          visible: {
+                            opacity: 1,
+                            rotateX: 0,
+                            y: 0,
+                            filter: "blur(0px)",
+                            transition: {
+                              duration: 0.5,
+                              ease: [0.16, 1, 0.3, 1],
+                              delay: 0.6 + i * 0.04,
+                            },
+                          },
+                        }}
+                      >
+                        {char === " " ? "\u00A0" : char}
+                      </motion.span>
+                    );
+                  })}
+
+                  {/* Dot 2 */}
+                  <motion.span
+                    style={{
+                      display: "inline-block",
+                      width: "3px",
+                      height: "3px",
+                      borderRadius: "50%",
+                      background: "#fff",
+                      flexShrink: 0,
+                      margin: "0 0.2rem",
+                    }}
+                    animate={{
+                      opacity: [1, 0.1, 1],
+                      scale: [1, 1.8, 1],
+                      boxShadow: [
+                        "0 0 8px rgba(255,255,255,0.9)",
+                        "0 0 2px rgba(255,255,255,0.1)",
+                        "0 0 8px rgba(255,255,255,0.9)",
+                      ],
+                    }}
+                    transition={{
+                      duration: 1.6,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: 0.8,
+                    }}
+                  />
+
+                  {/* 2026 */}
+                  {"2026".split("").map(function (digit, i) {
+                    return (
+                      <motion.span
+                        key={"y" + i}
+                        style={{
+                          display: "inline-block",
+                          fontFamily: '"Orbitron", monospace',
+                          fontSize: "clamp(0.42rem, 1.1vw, 0.85rem)",
+                          fontWeight: 900,
+                          color: "#fff",
+                          textShadow: "0 0 10px rgba(255,255,255,0.5)",
+                        }}
+                        variants={{
+                          hidden: { opacity: 0, rotateY: -180, scale: 0.5 },
+                          visible: {
+                            opacity: 1,
+                            rotateY: 0,
+                            scale: 1,
+                            transition: {
+                              duration: 0.6,
+                              ease: "backOut",
+                              delay: 1.0 + i * 0.1,
+                            },
+                          },
+                        }}
+                      >
+                        {digit}
+                      </motion.span>
+                    );
+                  })}
+                </div>
+              </motion.div>
+
+              {/* Right line */}
+              <div
                 style={{
-                  display: "inline-block",
-                  width: "4px",
-                  height: "4px",
-                  borderRadius: "50%",
-                  background: "#fff",
-                  flexShrink: 0,
-                  margin: "0 0.3rem",
-                }}
-                animate={{
-                  opacity: [1, 0.1, 1],
-                  scale: [1, 1.8, 1],
-                  boxShadow: [
-                    "0 0 8px rgba(255,255,255,0.9)",
-                    "0 0 2px rgba(255,255,255,0.1)",
-                    "0 0 8px rgba(255,255,255,0.9)",
-                  ],
-                }}
-                transition={{
-                  duration: 1.6,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 0.8,
+                  flex: "1 1 auto", // ← grows to fill available space
+                  height: "1px",
+                  background:
+                    "linear-gradient(to left, transparent, rgba(255,255,255,0.3), rgba(255,255,255,0.7))",
                 }}
               />
-
-              {/* Year — counts up digit by digit */}
-              {"2026".split("").map(function (digit, i) {
-                return (
-                  <motion.span
-                    key={"y" + i}
-                    style={{
-                      display: "inline-block",
-                      fontFamily: '"Orbitron", monospace',
-                      fontSize: "clamp(0.55rem, 1.2vw, 0.85rem)",
-                      fontWeight: 900,
-                      color: "#fff",
-                      textShadow: "0 0 10px rgba(255,255,255,0.5)",
-                    }}
-                    variants={{
-                      hidden: { opacity: 0, rotateY: -180, scale: 0.5 },
-                      visible: {
-                        opacity: 1,
-                        rotateY: 0,
-                        scale: 1,
-                        transition: {
-                          duration: 0.6,
-                          ease: "backOut",
-                          delay: 1.0 + i * 0.1,
-                        },
-                      },
-                    }}
-                  >
-                    {digit}
-                  </motion.span>
-                );
-              })}
-            </motion.div>
-
-            {/* Right line — ← was purple, now white */}
-            <div
-              style={{
-                flex: 1,
-                height: "1px",
-                background:
-                  "linear-gradient(to left, transparent, rgba(255,255,255,0.3), rgba(255,255,255,0.7))",
-              }}
-            />
+            </div>
           </div>
 
-          {/* Line 2 — ghost outline */}
-          <div className="clip-wrap" style={{ textAlign: "right" }}>
+          {/* Line 2 — ghost outline — one line on all screens */}
+          <div
+            className="clip-wrap"
+            style={{
+              textAlign: "right",
+              overflow: "visible", // ← allow last letter to show fully
+            }}
+          >
             <h1
               ref={line2Ref}
               className="clip-inner"
               style={{
                 fontFamily: '"Orbitron", monospace',
-                fontSize: "clamp(5.5rem, 20vw, 9rem)",
+                fontSize: "clamp(2.8rem, 10.5vw, 9rem)",
                 lineHeight: 0.88,
-                letterSpacing: "-0.03em",
-                fontWeight: 700,
+                letterSpacing: "0.15em",
+                fontWeight: 900,
                 color: "transparent",
-                WebkitTextStroke:
-                  "clamp(1px, 0.12vw, 2px) rgba(255,255,255,0.95)",
+                WebkitTextStroke: "1px rgba(255,255,255,0.6)",
                 display: "block",
-                /* ← was cyan glow, now white glow */
-                filter:
-                  "drop-shadow(0 0 30px rgba(255,255,255,0.12)) drop-shadow(0 8px 40px rgba(0,0,0,0.8))",
+                whiteSpace: "nowrap",
+                paddingRight: "0.15em", // ← compensates for letterSpacing clipping
+                // Layered glow — premium ghost effect
+                filter: [
+                  "drop-shadow(0 0 1px rgba(255,255,255,0.8))",
+                  "drop-shadow(0 0 20px rgba(255,255,255,0.15))",
+                  "drop-shadow(0 8px 40px rgba(0,0,0,0.9))",
+                ].join(" "),
+                transition:
+                  "filter 0.7s ease, letter-spacing 0.5s cubic-bezier(0.16,1,0.3,1), -webkit-text-stroke 0.4s ease",
+                cursor: "none",
               }}
             >
-              L o m - o n
+              L O M - O N
             </h1>
           </div>
         </div>

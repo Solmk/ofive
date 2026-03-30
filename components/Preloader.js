@@ -117,26 +117,34 @@ export default function Preloader() {
     <div
       ref={wrapRef}
       style={{
-        position:   'fixed',
-        inset:      0,
-        zIndex:     9999,
-        background: '#000',
-        display:    'flex',
-        flexDirection: 'column',
-        alignItems: 'flex-start',
-        justifyContent: 'space-between',
-        padding:    'clamp(1.5rem, 4vw, 3.5rem)',
-        overflow:   'hidden',
+        position: "fixed",
+        inset: 0,
+        zIndex: 9999,
+        background: "#000",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "flex-start",
+        justifyContent: "space-between",
+        padding: "clamp(1.5rem, 4vw, 3.5rem)",
+        overflow: "hidden",
       }}
       aria-hidden="true"
     >
       {/* Top-left: system label */}
-      <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.65rem', letterSpacing: '0.18em', color: 'rgba(255,255,255,0.35)', textTransform: 'uppercase' }}>
+      <div
+        style={{
+          fontFamily: "var(--font-mono)",
+          fontSize: "0.65rem",
+          letterSpacing: "0.18em",
+          color: "rgba(255,255,255,0.35)",
+          textTransform: "uppercase",
+        }}
+      >
         O FIVE / SYS_INIT
       </div>
 
       {/* Center: huge counter */}
-      <div style={{ display: 'flex', alignItems: 'flex-end', gap: '1rem' }}>
+      <div style={{ display: "flex", alignItems: "flex-end", gap: "1rem" }}>
         <span
           ref={counterRef}
           className="preloader-counter"
@@ -144,21 +152,28 @@ export default function Preloader() {
         >
           000
         </span>
-        <span style={{ fontFamily: 'var(--font-mono)', fontSize: '1rem', color: 'rgba(255,255,255,0.3)', marginBottom: '0.75rem' }}>
+        <span
+          style={{
+            fontFamily: "var(--font-mono)",
+            fontSize: "1rem",
+            color: "rgba(255,255,255,0.3)",
+            marginBottom: "0.75rem",
+          }}
+        >
           %
         </span>
       </div>
 
       {/* Bottom: name + tag */}
-      <div style={{ overflow: 'hidden' }}>
+      <div style={{ overflow: "hidden" }}>
         <div
           ref={nameRef}
           style={{
-            fontFamily:    'var(--font-display)',
-            fontSize:      'clamp(2.5rem, 8vw, 6rem)',
-            letterSpacing: '-0.02em',
-            lineHeight:    1,
-            color:         '#fff',
+            fontFamily: "var(--font-display)",
+            fontSize: "clamp(2.5rem, 8vw, 6rem)",
+            letterSpacing: "-0.02em",
+            lineHeight: 1,
+            color: "#fff",
           }}
         >
           O FIVE
@@ -166,13 +181,13 @@ export default function Preloader() {
         <div
           ref={tagRef}
           style={{
-            fontFamily:    'var(--font-mono)',
-            fontSize:      '0.65rem',
-            letterSpacing: '0.2em',
-            color:         '#06b6d4',
-            textTransform: 'uppercase',
-            marginTop:     '0.5rem',
-            opacity:       0,
+            fontFamily: "var(--font-mono)",
+            fontSize: "0.65rem",
+            letterSpacing: "0.2em",
+            color: "#f0f0f0",
+            textTransform: "uppercase",
+            marginTop: "0.5rem",
+            opacity: 0,
           }}
         >
           Nashville, TN — Full-Stack Engineer
