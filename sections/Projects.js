@@ -48,7 +48,7 @@ const PROJECTS = [
     desc: "A high-performance video-on-demand platform integrating the TMDb API for real-time media fetching and trailer playback.",
     tags: ["Next.js", "Tailwind CSS", "Firebase"],
     year: "2024",
-    image: "/feature-4.png",
+    image: "/feature-41.png",
     video: "/videos/soulflix.mp4",
     link: "https://soulflix-movie-app.vercel.app/",
   },
