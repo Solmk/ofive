@@ -127,16 +127,7 @@ export default function Footer() {
             onMouseEnter={onEmailEnter}
             onMouseLeave={onEmailLeave}
           >
-            <FlipText text="soultechethiopia@gmail.com" />
-            {/* Only SOUL spins */}
-            {/* {"SOUL".split("").map(function (char, i) {
-              return <FlipLetter key={i} char={char} />;
-            })} */}
-
-            {/* Rest is plain text */}
-            {/* <span style={{ color: "rgba(255,255,255,0.6)" }}>
-               TECHETHIOPIA@GMAIL.COM
-            </span> */}
+            <FlipText text="hello@ofive.dev" />
           </a>
         </div>
 
