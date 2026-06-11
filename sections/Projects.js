@@ -76,14 +76,14 @@ const PROJECTS = [
   },
   {
     id: "07",
-    title: "PULSE",
-    sub: "Health Platform",
-    desc: "Wearable data aggregator for professional athletes. TensorFlow pattern recognition. YC W23.",
-    tags: ["Swift", "TensorFlow", "Node.js"],
-    year: "2022",
+    title: "AI RESUME ENGINE",
+    sub: "AI-Powered Tool",
+    desc: "Browser-based resume tailor that rewrites your resume and generates a cover letter from any job description in under 30 seconds. Built with the Anthropic Claude API.",
+    tags: ["Vanilla JS", "Claude API", "PDF.js"],
+    year: "2026",
     image: "/hero-bg2.jpg",
     video: "/videos/feature-7.mp4",
-    link: "",
+    link: "https://resume-engine-v2.vercel.app/",
   },
 ];
 
