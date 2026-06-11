@@ -28,7 +28,7 @@ const PROJECTS = [
     year: "ACTIVE",
     image: "/feature-2.png",
     video: "/videos/machineTrack.mp4",
-    link: "",
+    link: "https://machinetrack-pro-phi.vercel.app/",
   },
   {
     id: "03",

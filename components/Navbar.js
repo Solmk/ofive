@@ -229,7 +229,7 @@ export default function Navbar() {
           })}
 
           <a
-            href="mailto:hello@ofive.dev"
+            href="mailto:soultechethiopia@gmail.com"
             data-cursor-hover
             style={{
               fontFamily: '"Orbitron", monospace',
@@ -452,7 +452,7 @@ export default function Navbar() {
                   textTransform: "uppercase",
                 }}
               >
-                hello@ofive.dev
+                soultechethiopia@gmail.com
               </span>
             </motion.div>
           </motion.div>

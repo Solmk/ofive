@@ -112,7 +112,7 @@ export default function Footer() {
             Ready to build something insane?
           </p>
           <a
-            href="mailto:hello@ofive.dev"
+            href="mailto:soultechethiopia@gmail.com"
             data-cursor-hover
             style={{
               fontFamily: '"Orbitron", monospace',
